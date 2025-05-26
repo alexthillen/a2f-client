@@ -1,0 +1,54 @@
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+
+env:
+  POETRY_VERSION: "1.7.2"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: python:3.10-slim
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install "poetry==${{ env.POETRY_VERSION }}"
+          poetry config virtualenvs.create false
+      - name: Build package
+        run: |
+          poetry install --no-interaction --no-ansi
+          poetry build
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    container: python:3.10-slim
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install "poetry==${{ env.POETRY_VERSION }}"
+          poetry config virtualenvs.create false
+      - name: Publish to PyPI
+        env:
+          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+        run: |
+          poetry config pypi-token.pypi $PYPI_TOKEN
+          poetry publish

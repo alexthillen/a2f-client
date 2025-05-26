@@ -1,0 +1,3020 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Kit services core",
+        "description": "Drive Kit with microservices",
+        "version": "0.1"
+    },
+    "paths": {
+        "/status": {
+            "get": {
+                "summary": "Returns the current status of the service",
+                "description": "Returns the current status of the service.",
+                "operationId": "_status_status_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/USD/Load": {
+            "post": {
+                "tags": [
+                    "General A2F"
+                ],
+                "summary": "Load a USD file into the stage",
+                "operationId": "load_USD_A2F_USD_Load_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoadUSDModelRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/GetInstances": {
+            "get": {
+                "tags": [
+                    "General A2F"
+                ],
+                "summary": "Lists the existing A2F instances in the scene",
+                "description": "Returns the existing instances as dictionary {'fullface_instances':[paths]}",
+                "operationId": "get_player_instances_A2F_GetInstances_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/SetFrame": {
+            "post": {
+                "tags": [
+                    "General A2F"
+                ],
+                "summary": "Sets the current frame",
+                "description": "Set the current frame. Use the option 'as_timestamps' to set a time stamps (s) instead",
+                "operationId": "set_frame_A2F_SetFrame_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetFrameRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/GetFrame": {
+            "post": {
+                "tags": [
+                    "General A2F"
+                ],
+                "summary": "Returns the current frame",
+                "description": "Returns the current frame. Use the option 'as_timestamps' to get a time stamp (seconds) instead",
+                "operationId": "get_frame_A2F_GetFrame_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetFrameRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/SetSettings": {
+            "post": {
+                "tags": [
+                    "General A2F"
+                ],
+                "summary": "Sets the values for the specified settings in the given A2F instance",
+                "description": "The settings to update must be specified as a dictionary of {setting:value} pairs",
+                "operationId": "set_a2f_settings_A2F_SetSettings_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetSettingsRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/GetSettings": {
+            "post": {
+                "tags": [
+                    "General A2F"
+                ],
+                "summary": "Get the specified setting values in the given A2F instance",
+                "description": "The settings to retrieve must be specified as a dictionary of {setting:value} pairs",
+                "operationId": "set_a2f_settings_A2F_GetSettings_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetSettingsRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/GetSettingNames": {
+            "post": {
+                "tags": [
+                    "General A2F"
+                ],
+                "summary": "Get the list of available settings in the given A2F instance",
+                "description": "Returns a list of setting names",
+                "operationId": "get_a2f_setting_names_A2F_GetSettingNames_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/A2FInstanceRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/A2E/GetEmotionNames": {
+            "get": {
+                "tags": [
+                    "Audio2Emotion"
+                ],
+                "summary": "List the available emotion names",
+                "description": "return as a list",
+                "operationId": "get_a2e_emotion_names_A2F_A2E_GetEmotionNames_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/A2E/GetEmotion": {
+            "post": {
+                "tags": [
+                    "Audio2Emotion"
+                ],
+                "summary": "List the emotion weights at a given frame. If a frame is not specified the emotions at current frame are returned",
+                "description": "returns a list or a dictionary {\"emotion\":weight}",
+                "operationId": "get_a2e_emotion_A2F_A2E_GetEmotion_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetEmotionRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/A2E/SetEmotion": {
+            "post": {
+                "tags": [
+                    "Audio2Emotion"
+                ],
+                "summary": "Set the current frame emotion weights for the given A2F instance",
+                "description": "The emotion vector should be a list of floats. To specify emotions by name instead, use the A2F/A2E/SetEmotionByName",
+                "operationId": "set_a2e_emotion_A2F_A2E_SetEmotion_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetEmotionRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/A2E/SetEmotionByName": {
+            "post": {
+                "tags": [
+                    "Audio2Emotion"
+                ],
+                "summary": "Sets the weights for the specified emotions in the given A2F instance",
+                "description": "Please provide a dictionary {\"emotion\":weight} with the emotion names and values to override. Alternatively you can use A2F/A2E/SetEmotion to set all emotions at once with a vector.",
+                "operationId": "set_a2e_emotion_by_name_A2F_A2E_SetEmotionByName_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetEmotionByNameRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/A2E/NumKeys": {
+            "post": {
+                "tags": [
+                    "Audio2Emotion"
+                ],
+                "summary": "The number of A2E keyframes",
+                "description": "List the existing number of emotion keys",
+                "operationId": "get_a2e_num_keys_A2F_A2E_NumKeys_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/A2FInstanceRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/A2E/GetKeys": {
+            "post": {
+                "tags": [
+                    "Audio2Emotion"
+                ],
+                "summary": "List the exisiting emotion key frames",
+                "description": "Returns a list of existing key frames. Use the option 'as_timestamps' to get time stamps (s) instead",
+                "operationId": "get_a2e_key_frames_A2F_A2E_GetKeys_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetKeysRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/A2E/GetKeyData": {
+            "post": {
+                "tags": [
+                    "Audio2Emotion"
+                ],
+                "summary": "Lists the existing emotion keys and values",
+                "description": "Returns the key frames and values. Use the option 'as_timestamps' to get time stamps (s) instead",
+                "operationId": "get_a2e_keyData_A2F_A2E_GetKeyData_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetKeysRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/A2E/RemoveKeys": {
+            "post": {
+                "tags": [
+                    "Audio2Emotion"
+                ],
+                "summary": "Removes the specified A2E key frames",
+                "description": "Removes the specified key frames. Use the option 'as_timestamps' to specify time stamps (s) instead",
+                "operationId": "remove_a2e_keys_A2F_A2E_RemoveKeys_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RemoveKeysRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/A2E/AddKeys": {
+            "post": {
+                "tags": [
+                    "Audio2Emotion"
+                ],
+                "summary": "Set emotion keys",
+                "description": "Sets key frames and values. Use the option 'as_timestamps' to specify time stamps (s) instead",
+                "operationId": "add_a2e_keys_A2F_A2E_AddKeys_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AddEmotionKeysRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/A2E/EnableStreaming": {
+            "post": {
+                "tags": [
+                    "Audio2Emotion"
+                ],
+                "summary": "A2E streaming mode",
+                "description": "Enable or disable auto-emotion in streaming and microphone modes",
+                "operationId": "enable_a2e_streaming_A2F_A2E_EnableStreaming_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EnableA2EStreamingRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/A2E/EnableAutoGenerateOnTrackChange": {
+            "post": {
+                "tags": [
+                    "Audio2Emotion"
+                ],
+                "summary": "Auto Generate On Track Change",
+                "description": "Enable or disable the automatic generation of A2E keys on track change.",
+                "operationId": "enable_a2e_auto_generate_on_track_change_A2F_A2E_EnableAutoGenerateOnTrackChange_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EnableA2EAutoGenerateOnTrackChangeRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/A2E/GetSettings": {
+            "post": {
+                "tags": [
+                    "Audio2Emotion"
+                ],
+                "summary": "Get the automatic emotion keyframe generation settings",
+                "description": "Please see GenerateEmotionKeysRequest schema description for the available settings",
+                "operationId": "get_auto_a2e_settings_A2F_A2E_GetSettings_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/A2FInstanceRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/A2E/SetSettings": {
+            "post": {
+                "tags": [
+                    "Audio2Emotion"
+                ],
+                "summary": "Sets the parameters for the automatic emotion keyframe generation",
+                "description": "Please see GenerateEmotionKeysRequest schema for the available parameters",
+                "operationId": "set_auto_a2e_settings_A2F_A2E_SetSettings_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GenerateEmotionKeysRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/A2E/GenerateKeys": {
+            "post": {
+                "tags": [
+                    "Audio2Emotion"
+                ],
+                "summary": "Generate emotion keys automatically",
+                "description": "Generates emotion key frames automatically. You can specify the settings to generate the emotion keys. If not specified, the scene values are used instead. Specifying the settings in this function does not ovverride the existing scene values on the scene. !!This function OVERRIDES any exisiting keys!!",
+                "operationId": "generate_a2e_keys_A2F_A2E_GenerateKeys_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GenerateEmotionKeysRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/PRE/SetSettings": {
+            "post": {
+                "tags": [
+                    "Pre-Processing"
+                ],
+                "summary": "Sets the Pre-processing settings in the given A2F instance",
+                "description": "Please see the A2FPreProcessingSettingsRequest description for the available settings",
+                "operationId": "set_preprocessing_settings_A2F_PRE_SetSettings_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetPreProcessingSettingsRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/PRE/GetSettings": {
+            "post": {
+                "tags": [
+                    "Pre-Processing"
+                ],
+                "summary": "Gets the current Pre-processing parameters",
+                "description": "Returns the Pre-processing parameters as a dictionary {setting:name} pairs",
+                "operationId": "get_pre_processing_settings_A2F_PRE_GetSettings_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/A2FInstanceRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/POST/NumKeys": {
+            "post": {
+                "tags": [
+                    "Post-Processing"
+                ],
+                "summary": "The number of post-processing keyframes",
+                "description": "Returns the number of key frames on the post-processing settings",
+                "operationId": "get_post_num_keys_A2F_POST_NumKeys_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/A2FInstanceRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/POST/GetKeys": {
+            "post": {
+                "tags": [
+                    "Post-Processing"
+                ],
+                "summary": "List the existing post-processing key frames",
+                "description": "Returns a list of existing key frames. Use the option 'as_timestamps' to get time stamps (s) instead",
+                "operationId": "get_post_key_frames_A2F_POST_GetKeys_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetKeysRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/POST/GetKeyData": {
+            "post": {
+                "tags": [
+                    "Post-Processing"
+                ],
+                "summary": "Lists the existing post-processing keys and values",
+                "description": "Returns the key frames and values. use the option 'as_timestamps' to get time stamps (s) instead",
+                "operationId": "get_post_keyData_A2F_POST_GetKeyData_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetKeysRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/POST/RemoveKeys": {
+            "post": {
+                "tags": [
+                    "Post-Processing"
+                ],
+                "summary": "Removes the specified post-processing key frames",
+                "description": "Removes the specified the key frames. Use the option 'as_timestamps' to specify time stamps (s) instead",
+                "operationId": "remove_post_keys_A2F_POST_RemoveKeys_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RemoveKeysRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/POST/AddKeys": {
+            "post": {
+                "tags": [
+                    "Post-Processing"
+                ],
+                "summary": "Set post-processing key frames",
+                "description": "Set the key frames and values. Use the option 'as_timestamps' to specify time stamps (s) instead",
+                "operationId": "add_post_keys_A2F_POST_AddKeys_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AddPostProcessingKeysRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/POST/SetSettings": {
+            "post": {
+                "tags": [
+                    "Post-Processing"
+                ],
+                "summary": "Sets post-processing settings in A2F for the current frame",
+                "description": "Please use the /POST/GetSettingNames to get a list the available settings",
+                "operationId": "set_post_settings_A2F_POST_SetSettings_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetPostProcessingSettingsRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/POST/GetSettings": {
+            "post": {
+                "tags": [
+                    "Post-Processing"
+                ],
+                "summary": "Get the post-processing setting values",
+                "description": "Get the current post-processing parameters. Specify a frame or time stamp to get the parameters at that time",
+                "operationId": "get_post_processing_settings_A2F_POST_GetSettings_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetPostProcessingSettingsRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/POST/GetSettingNames": {
+            "post": {
+                "tags": [
+                    "Post-Processing"
+                ],
+                "summary": "List the available post-processing settings",
+                "description": "Returns a list of setting names",
+                "operationId": "get_post_setting_names_A2F_POST_GetSettingNames_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/A2FInstanceRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Player/GetInstances": {
+            "get": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "Lists the existing player instances in the scene",
+                "description": "Returns the existing instances as dictionary {'regular':[paths],'streaming':[paths] }",
+                "operationId": "get_player_instances_A2F_Player_GetInstances_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Player/GetRootPath": {
+            "post": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "List the audio root path on the given player",
+                "description": "Returns the directory path",
+                "operationId": "get_player_root_directory_A2F_Player_GetRootPath_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequirePlayerInstanceRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Player/SetRootPath": {
+            "post": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "Sets the root folder for the audio files.",
+                "description": "Expects a path to a folder.",
+                "operationId": "set_root_path_A2F_Player_SetRootPath_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RootPathRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Player/GetTracks": {
+            "post": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "List available audio tracks on the given player",
+                "description": "Returns list of available audio files on the specified player",
+                "operationId": "get_player_tracks_A2F_Player_GetTracks_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequirePlayerInstanceRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Player/GetCurrentTrack": {
+            "post": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "List the current audio track on the given player",
+                "description": "Returns the name of the current audio file on the specified Player",
+                "operationId": "get_player_current_track_A2F_Player_GetCurrentTrack_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequirePlayerInstanceRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Player/SetTrack": {
+            "post": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "Set a track as the active audio track",
+                "description": "Expects an audio filename within the root track folder",
+                "operationId": "set_track_A2F_Player_SetTrack_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetTrackRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Player/GetRange": {
+            "post": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "Lists the default and working time ranges of the active audio track",
+                "description": "Returns a dictionary {'default':[float,float], 'work':[float,float]}. The range is specified by start and end time stamps in seconds.",
+                "operationId": "get_player_Range_A2F_Player_GetRange_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequirePlayerInstanceRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Player/SetRange": {
+            "post": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "Sets the working time range for the active audio track",
+                "description": "Expects start/end time stamps in seconds. The start/end parameters are optional. The default range values are used for the missing parameter. Clamps range if necessary.",
+                "operationId": "set_range_A2F_Player_SetRange_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetRangeRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Player/GetTime": {
+            "post": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "Gets the current time stamp of the active audio track",
+                "description": "Returns a time in seconds.",
+                "operationId": "get_frame_A2F_Player_GetTime_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequirePlayerInstanceRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Player/SetTime": {
+            "post": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "Sets the current time stamp of the active audio track",
+                "description": "Expects a time in seconds.",
+                "operationId": "set_time_A2F_Player_SetTime_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetTimeRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Player/Play": {
+            "post": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "Starts playing the current track.",
+                "description": "Starts playing the current track.",
+                "operationId": "play_A2F_Player_Play_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequirePlayerInstanceRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Player/Pause": {
+            "post": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "Pauses the player.",
+                "description": "Pauses the player.",
+                "operationId": "pause_A2F_Player_Pause_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequirePlayerInstanceRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Player/Rewind": {
+            "post": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "Rewind the player.",
+                "description": "Sets the current time back to the first frame.",
+                "operationId": "rewind_A2F_Player_Rewind_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequirePlayerInstanceRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Player/SetLooping": {
+            "post": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "Enables/Disables looping audio tracks.",
+                "description": "(Bool) Enables/Disables looping audio tracks..",
+                "operationId": "setLoopingOption_A2F_Player_SetLooping_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetLoopingRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Exporter/GetBlendShapeSolvers": {
+            "get": {
+                "tags": [
+                    "Export"
+                ],
+                "summary": "Lists the existing blendshape solver nodes in the scene",
+                "description": "Returns a lists of paths to the blendshape solves",
+                "operationId": "get_blendshape_solvers_A2F_Exporter_GetBlendShapeSolvers_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Exporter/GetStreamLivelinkNodes": {
+            "get": {
+                "tags": [
+                    "Export"
+                ],
+                "summary": "Lists the existing StreamLivelink nodes in the scene",
+                "description": "Returns a lists of paths to the StreamLivelink nodes",
+                "operationId": "get_stream_livelink_nodes_A2F_Exporter_GetStreamLivelinkNodes_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Exporter/ActivateStreamLivelink": {
+            "post": {
+                "tags": [
+                    "Export"
+                ],
+                "summary": "Activate a StreamLivelink node",
+                "description": "Activate a StreamLivelink node. The node will try connecting to host:port.",
+                "operationId": "activate_stream_livelink_A2F_Exporter_ActivateStreamLivelink_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ActivateStreamLivelinkRequestModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Exporter/IsStreamLivelinkConnected": {
+            "post": {
+                "tags": [
+                    "Export"
+                ],
+                "summary": "Get if the node is connected",
+                "description": "Get if a StreamLivelink node is active and connected.",
+                "operationId": "is_stream_livelink_connected_A2F_Exporter_IsStreamLivelinkConnected_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NodeRequestModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Exporter/GetStreamLivelinkSettings": {
+            "post": {
+                "tags": [
+                    "Export"
+                ],
+                "summary": "Get the setting values of the StreamLivelink node",
+                "description": "The settings specified as a dictionary of {setting:value} pairs",
+                "operationId": "get_stream_livelink_settings_A2F_Exporter_GetStreamLivelinkSettings_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NodeRequestModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Exporter/SetStreamLivelinkSettings": {
+            "post": {
+                "tags": [
+                    "Export"
+                ],
+                "summary": "Set the setting values of the StreamLivelink node",
+                "description": "The settings should be specified as a dictionary of {setting:value} pairs",
+                "operationId": "set_stream_livelink_settings_A2F_Exporter_SetStreamLivelinkSettings_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetStreamLivelinkRequestModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Exporter/ExportBlendshapes": {
+            "post": {
+                "tags": [
+                    "Export"
+                ],
+                "summary": "Export the blendshape weights",
+                "description": "Batch or single audio track export function. Please check the ExportRequestModel description for the export options. Existing output files will be overwritten.",
+                "operationId": "export_blendshape_A2F_Exporter_ExportBlendshapes_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ExportRequestModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Exporter/ExportGeometryCache": {
+            "post": {
+                "tags": [
+                    "Export"
+                ],
+                "summary": "Export geometry caches",
+                "description": "Batch or single audio track export function. Please check the ExportGeometryCacheRequestModel description for the export options. Existing output files will be overwritten.",
+                "operationId": "export_geometry_cache_A2F_Exporter_ExportGeometryCache_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ExportGeometryCacheRequestModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/A2F/Exporter/ExportEmotionKeys": {
+            "post": {
+                "tags": [
+                    "Export"
+                ],
+                "summary": "Export emotion keys",
+                "description": "Batch or single audio track export function for emotion keys. Please check the ExportEmotionKeysRequestModel description for the export options. Existing output files will be overwritten.",
+                "operationId": "export_emotion_keys_A2F_Exporter_ExportEmotionKeys_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ExportEmotionKeysRequestModel"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "A2FInstanceRequest": {
+                "title": "A2FInstanceRequest",
+                "required": [
+                    "a2f_instance"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_instance": {
+                        "title": "A2F Core instance",
+                        "type": "string",
+                        "description": "Path to the A2F core instance prim"
+                    }
+                }
+            },
+            "ActivateStreamLivelinkRequestModel": {
+                "title": "ActivateStreamLivelinkRequestModel",
+                "required": [
+                    "node_path",
+                    "value"
+                ],
+                "type": "object",
+                "properties": {
+                    "node_path": {
+                        "title": "A target node path",
+                        "type": "string",
+                        "description": "Path to a node to access."
+                    },
+                    "value": {
+                        "title": "Activate",
+                        "type": "boolean",
+                        "description": "True to enable, False to disable."
+                    }
+                }
+            },
+            "AddEmotionKeysRequest": {
+                "title": "AddEmotionKeysRequest",
+                "required": [
+                    "a2f_instance",
+                    "keys",
+                    "values"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_instance": {
+                        "title": "A2F Core instance",
+                        "type": "string",
+                        "description": "Path to the A2F core instance prim"
+                    },
+                    "keys": {
+                        "title": "key frames",
+                        "anyOf": [
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer"
+                                }
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "number"
+                                }
+                            }
+                        ],
+                        "description": "Frame numbers or time stamps to add"
+                    },
+                    "values": {
+                        "title": "key values",
+                        "type": "array",
+                        "items": {
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            }
+                        },
+                        "description": "A list of emotion weight vectors for each key frame"
+                    },
+                    "as_timestamps": {
+                        "title": "as time stamps",
+                        "type": "boolean",
+                        "description": "The key data is specified as time stamps (s) instead of frame numbers",
+                        "default": false
+                    }
+                }
+            },
+            "AddPostProcessingKeysRequest": {
+                "title": "AddPostProcessingKeysRequest",
+                "required": [
+                    "a2f_instance",
+                    "keys",
+                    "values"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_instance": {
+                        "title": "A2F Core instance",
+                        "type": "string",
+                        "description": "Path to the A2F core instance prim"
+                    },
+                    "keys": {
+                        "title": "key frames",
+                        "anyOf": [
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer"
+                                }
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "number"
+                                }
+                            }
+                        ],
+                        "description": "Frame numbers or time stamps to add"
+                    },
+                    "values": {
+                        "title": "key values",
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        },
+                        "description": "A list of settings dictionary for each key frame"
+                    },
+                    "as_timestamps": {
+                        "title": "as time stamps",
+                        "type": "boolean",
+                        "description": "the key data is specified as time stamps (s) instead of frames",
+                        "default": false
+                    }
+                }
+            },
+            "EnableA2EAutoGenerateOnTrackChangeRequest": {
+                "title": "EnableA2EAutoGenerateOnTrackChangeRequest",
+                "required": [
+                    "a2f_instance",
+                    "enable"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_instance": {
+                        "title": "A2F Core instance",
+                        "type": "string",
+                        "description": "Path to the A2F core instance prim"
+                    },
+                    "enable": {
+                        "title": "Auto Generate On Track Change",
+                        "type": "boolean",
+                        "description": "Enable/Disable generation of keyframes upon track change"
+                    }
+                }
+            },
+            "EnableA2EStreamingRequest": {
+                "title": "EnableA2EStreamingRequest",
+                "required": [
+                    "a2f_instance",
+                    "enable"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_instance": {
+                        "title": "A2F Core instance",
+                        "type": "string",
+                        "description": "Path to the A2F core instance prim"
+                    },
+                    "enable": {
+                        "title": "Enable Auto-Emotion Streaming",
+                        "type": "boolean",
+                        "description": "Enable/Disable auto-emotion in streaming and microphone modes"
+                    }
+                }
+            },
+            "ExportEmotionKeysRequestModel": {
+                "title": "ExportEmotionKeysRequestModel",
+                "required": [
+                    "a2f_node"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_node": {
+                        "title": "A2F node to export the emotion keys",
+                        "type": "string",
+                        "description": "Path to the A2F node to export. Use /A2F/GetInstances to list the available nodes"
+                    },
+                    "export_directory": {
+                        "title": "directory for export",
+                        "type": "string",
+                        "description": "Destination folder to export the data. Will use the scene setting value if unspecified."
+                    },
+                    "file_name": {
+                        "title": "file name",
+                        "type": "string",
+                        "description": "Output file name/ prefix. Will use the scene setting value if unspecified."
+                    },
+                    "format": {
+                        "title": "export format",
+                        "type": "string",
+                        "description": "json, usd (binary), usda (ascii).",
+                        "default": "json"
+                    },
+                    "batch": {
+                        "title": "batch processing",
+                        "type": "boolean",
+                        "description": "If enabled, exports the animation for all files in root folder. When using batch the file name is used as a prefix before the audio file name.",
+                        "default": false
+                    }
+                }
+            },
+            "ExportGeometryCacheRequestModel": {
+                "title": "ExportGeometryCacheRequestModel",
+                "type": "object",
+                "properties": {
+                    "meshes": {
+                        "title": "meshes",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "a list of meshes to export. if not set it will export the visible meshes in the stage."
+                    },
+                    "export_directory": {
+                        "title": "directory for export",
+                        "type": "string",
+                        "description": "Destination folder to export the data. Will use the scene setting value if unspecified."
+                    },
+                    "file_name": {
+                        "title": "file name",
+                        "type": "string",
+                        "description": "Output file name/ prefix. Will use the scene setting value if unspecified."
+                    },
+                    "cache_type": {
+                        "title": "type of cache to export",
+                        "type": "string",
+                        "description": "The type of cache to be exported ( usd, maya )",
+                        "default": "usd"
+                    },
+                    "xform_keys": {
+                        "title": "Export rigid xforms as keys",
+                        "type": "boolean",
+                        "description": "(Only USD) Export rigid xforms as keys or baked as geometry.",
+                        "default": false
+                    },
+                    "batch": {
+                        "title": "batch processing",
+                        "type": "boolean",
+                        "description": "(Only USD) Export single audio file or all files in root folder. When using batch the file name is used as a prefix before the audio file name.",
+                        "default": false
+                    },
+                    "fps": {
+                        "title": "frame rate",
+                        "type": "integer",
+                        "description": "Frame rate of the keys. Will use the scene setting value if unspecified."
+                    }
+                }
+            },
+            "ExportRequestModel": {
+                "title": "ExportRequestModel",
+                "required": [
+                    "solver_node"
+                ],
+                "type": "object",
+                "properties": {
+                    "solver_node": {
+                        "title": "blendshape solver node to export",
+                        "type": "string",
+                        "description": "Path to the solver node to export. Use /A2F/Exporter/GetBlendShapeSolvers to list the available nodes"
+                    },
+                    "export_directory": {
+                        "title": "directory for export",
+                        "type": "string",
+                        "description": "Destination folder to export the data. Will use the scene setting value if unspecified."
+                    },
+                    "file_name": {
+                        "title": "file name",
+                        "type": "string",
+                        "description": "Output file name/ prefix. Will use the scene setting value if unspecified."
+                    },
+                    "format": {
+                        "title": "export format",
+                        "type": "string",
+                        "description": "json, usd (binary), usda (ascii).",
+                        "default": "json"
+                    },
+                    "batch": {
+                        "title": "batch processing",
+                        "type": "boolean",
+                        "description": "If enabled, exports the animation for all files in root folder. When using batch the file name is used as a prefix before the audio file name.",
+                        "default": false
+                    },
+                    "fps": {
+                        "title": "frame rate",
+                        "type": "integer",
+                        "description": "Frame rate of the keys. Will use the scene setting value if unspecified."
+                    }
+                }
+            },
+            "GenerateEmotionKeysRequest": {
+                "title": "GenerateEmotionKeysRequest",
+                "required": [
+                    "a2f_instance"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_instance": {
+                        "title": "A2F Core instance",
+                        "type": "string",
+                        "description": "Path to the A2F core instance prim"
+                    },
+                    "a2e_window_size": {
+                        "title": "emotion detection range",
+                        "type": "number",
+                        "description": "Sets the size of the audio chunk used to predict a single emotion/keyframe (in seconds)"
+                    },
+                    "a2e_stride": {
+                        "title": "keyframe interval",
+                        "type": "number",
+                        "description": "Sets the stride (step) between adjacent audio windows/keyframes (in seconds)"
+                    },
+                    "a2e_emotion_strength": {
+                        "title": "emotion strength",
+                        "type": "number",
+                        "description": "Sets the strength of the generated emotions relative to neutral emotion"
+                    },
+                    "a2e_smoothing_kernel_radius": {
+                        "title": "smoothing conv",
+                        "type": "integer",
+                        "description": "Sets the number of neighboring keyframes used for emotion smoothing"
+                    },
+                    "a2e_smoothing_exp": {
+                        "title": "smoothing exp",
+                        "type": "number",
+                        "description": "Sets a coefficient indicating how much the previous emotion value affects the next one"
+                    },
+                    "a2e_max_emotions": {
+                        "title": "max emotions",
+                        "type": "integer",
+                        "description": "Sets a firm limit on the quantity of emotion sliders engaged by A2E - emotions with highest weight will be prioritized"
+                    },
+                    "a2e_contrast": {
+                        "title": "emotion contrast",
+                        "type": "number",
+                        "description": "Increases the spread between emotion values by pushing them higher or lower"
+                    },
+                    "preferred_emotion": {
+                        "title": "preferred emotion",
+                        "anyOf": [
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "number"
+                                }
+                            },
+                            {
+                                "type": "boolean"
+                            }
+                        ],
+                        "description": "Use the specified emotion vector as preferent emotion. Use false to unset"
+                    },
+                    "a2e_preferred_emotion_strength": {
+                        "title": "preferred emotion strength",
+                        "type": "number",
+                        "description": "Sets the strength of the preferred emotion (if loaded) relative to the generated emotions"
+                    },
+                    "a2e_streaming_smoothing": {
+                        "title": "streaming smoothing",
+                        "type": "number",
+                        "description": "Streaming mode: coefficient for exponential smoothing of emotion"
+                    },
+                    "a2e_streaming_update_period": {
+                        "title": "streaming update period",
+                        "type": "integer",
+                        "description": "Streaming mode: Perform emotion update every N ticks"
+                    },
+                    "a2e_streaming_transition_time": {
+                        "title": "streaming transition time",
+                        "type": "number",
+                        "description": "Streaming mode: Transition time between emotions change"
+                    }
+                }
+            },
+            "GetEmotionRequest": {
+                "title": "GetEmotionRequest",
+                "required": [
+                    "a2f_instance"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_instance": {
+                        "title": "A2F Core instance",
+                        "type": "string",
+                        "description": "Path to the A2F core instance prim"
+                    },
+                    "as_vector": {
+                        "title": "as vector",
+                        "type": "boolean",
+                        "description": "Returns a vector containing the emotion weights instead of a dictionary {\"emotion\":weight}",
+                        "default": true
+                    },
+                    "frame": {
+                        "title": "Frame",
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "number"
+                            }
+                        ],
+                        "description": "Return the emotion weights at the given frame"
+                    },
+                    "as_timestamp": {
+                        "title": "as time stamps",
+                        "type": "boolean",
+                        "description": "The given frame is specified as a time stamp(s)",
+                        "default": false
+                    }
+                }
+            },
+            "GetFrameRequest": {
+                "title": "GetFrameRequest",
+                "required": [
+                    "a2f_instance"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_instance": {
+                        "title": "A2F Core instance",
+                        "type": "string",
+                        "description": "Path to the A2F core instance prim"
+                    },
+                    "as_timestamp": {
+                        "title": "as time stamp",
+                        "type": "boolean",
+                        "description": "return the current frame as a time stamp (s) instead of a frame number",
+                        "default": false
+                    }
+                }
+            },
+            "GetKeysRequest": {
+                "title": "GetKeysRequest",
+                "required": [
+                    "a2f_instance"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_instance": {
+                        "title": "A2F Core instance",
+                        "type": "string",
+                        "description": "Path to the A2F core instance prim"
+                    },
+                    "as_timestamps": {
+                        "title": "as time stamps",
+                        "type": "boolean",
+                        "description": "Return the key data as time stamps (s) instead of frame numbers",
+                        "default": false
+                    }
+                }
+            },
+            "GetPostProcessingSettingsRequest": {
+                "title": "GetPostProcessingSettingsRequest",
+                "required": [
+                    "a2f_instance"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_instance": {
+                        "title": "A2F Core instance",
+                        "type": "string",
+                        "description": "Path to the A2F core instance prim"
+                    },
+                    "frame": {
+                        "title": "frame",
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "number"
+                            }
+                        ],
+                        "description": "The frame to evaluate the settings"
+                    },
+                    "as_timestamp": {
+                        "title": "as time stamps",
+                        "type": "boolean",
+                        "description": "The given frame was specified as a time stamp (s) instead of a frame number",
+                        "default": false
+                    }
+                }
+            },
+            "GetSettingsRequest": {
+                "title": "GetSettingsRequest",
+                "required": [
+                    "a2f_instance",
+                    "settings"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_instance": {
+                        "title": "A2F Core instance",
+                        "type": "string",
+                        "description": "Path to the A2F core instance prim"
+                    },
+                    "settings": {
+                        "title": "settings",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of the setting names to query"
+                    }
+                }
+            },
+            "HTTPValidationError": {
+                "title": "HTTPValidationError",
+                "type": "object",
+                "properties": {
+                    "detail": {
+                        "title": "Detail",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        }
+                    }
+                }
+            },
+            "LoadUSDModelRequest": {
+                "title": "LoadUSDModelRequest",
+                "required": [
+                    "file_name"
+                ],
+                "type": "object",
+                "properties": {
+                    "file_name": {
+                        "title": "file name",
+                        "type": "string",
+                        "description": "The path to the USD file to load"
+                    }
+                }
+            },
+            "NodeRequestModel": {
+                "title": "NodeRequestModel",
+                "required": [
+                    "node_path"
+                ],
+                "type": "object",
+                "properties": {
+                    "node_path": {
+                        "title": "A target node path",
+                        "type": "string",
+                        "description": "Path to a node to access."
+                    }
+                }
+            },
+            "RemoveKeysRequest": {
+                "title": "RemoveKeysRequest",
+                "required": [
+                    "a2f_instance",
+                    "keys"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_instance": {
+                        "title": "A2F Core instance",
+                        "type": "string",
+                        "description": "Path to the A2F core instance prim"
+                    },
+                    "keys": {
+                        "title": "key frames",
+                        "anyOf": [
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer"
+                                }
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "number"
+                                }
+                            }
+                        ],
+                        "description": "frames or time stamps to remove"
+                    },
+                    "as_timestamps": {
+                        "title": "as time stamps",
+                        "type": "boolean",
+                        "description": "The given frames are specified as time stamps (s) instead of frame numbers",
+                        "default": false
+                    }
+                }
+            },
+            "RequirePlayerInstanceRequest": {
+                "title": "RequirePlayerInstanceRequest",
+                "required": [
+                    "a2f_player"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_player": {
+                        "title": "A2F player instance",
+                        "type": "string",
+                        "description": "the target A2F player instance "
+                    }
+                }
+            },
+            "RootPathRequest": {
+                "title": "RootPathRequest",
+                "required": [
+                    "a2f_player",
+                    "dir_path"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_player": {
+                        "title": "A2F player instance",
+                        "type": "string",
+                        "description": "the target A2F player instance "
+                    },
+                    "dir_path": {
+                        "title": "Track root path",
+                        "type": "string",
+                        "description": "Path to the audio source folder"
+                    }
+                }
+            },
+            "SetEmotionByNameRequest": {
+                "title": "SetEmotionByNameRequest",
+                "required": [
+                    "a2f_instance",
+                    "emotions"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_instance": {
+                        "title": "A2F Core instance",
+                        "type": "string",
+                        "description": "Path to the A2F core instance prim"
+                    },
+                    "emotions": {
+                        "title": "emotion values",
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "number"
+                        },
+                        "description": "a dictionary {\"emotion\":weight} with the emotion names and values to override."
+                    }
+                }
+            },
+            "SetEmotionRequest": {
+                "title": "SetEmotionRequest",
+                "required": [
+                    "a2f_instance",
+                    "emotion"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_instance": {
+                        "title": "A2F Core instance",
+                        "type": "string",
+                        "description": "Path to the A2F core instance prim"
+                    },
+                    "emotion": {
+                        "title": "emotion vector",
+                        "type": "array",
+                        "items": {
+                            "type": "number"
+                        },
+                        "description": "A vector containing the emotion weights to set"
+                    }
+                }
+            },
+            "SetFrameRequest": {
+                "title": "SetFrameRequest",
+                "required": [
+                    "a2f_instance",
+                    "frame"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_instance": {
+                        "title": "A2F Core instance",
+                        "type": "string",
+                        "description": "Path to the A2F core instance prim"
+                    },
+                    "frame": {
+                        "title": "Frame",
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "number"
+                            }
+                        ],
+                        "description": "frame number or time stamp in seconds"
+                    },
+                    "as_timestamp": {
+                        "title": "as time stamp",
+                        "type": "boolean",
+                        "description": "The given frame is specified as a time stamps (s) instead of a frame number",
+                        "default": false
+                    }
+                }
+            },
+            "SetLoopingRequest": {
+                "title": "SetLoopingRequest",
+                "required": [
+                    "a2f_player",
+                    "loop_audio"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_player": {
+                        "title": "A2F player instance",
+                        "type": "string",
+                        "description": "the target A2F player instance "
+                    },
+                    "loop_audio": {
+                        "title": "loop_audio",
+                        "type": "boolean",
+                        "description": "(Bool) enable/disable looping audio."
+                    }
+                }
+            },
+            "SetPostProcessingSettingsRequest": {
+                "title": "SetPostProcessingSettingsRequest",
+                "required": [
+                    "a2f_instance",
+                    "settings"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_instance": {
+                        "title": "A2F Core instance",
+                        "type": "string",
+                        "description": "Path to the A2F core instance prim"
+                    },
+                    "settings": {
+                        "title": "settings",
+                        "type": "object",
+                        "description": "A dictonary of settings in the form {setting:value}"
+                    }
+                }
+            },
+            "SetPreProcessingSettingsRequest": {
+                "title": "SetPreProcessingSettingsRequest",
+                "required": [
+                    "a2f_instance"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_instance": {
+                        "title": "A2F Core instance",
+                        "type": "string",
+                        "description": "Path to the A2F core instance prim"
+                    },
+                    "prediction_delay": {
+                        "title": "prediction delay",
+                        "type": "number",
+                        "description": "Allows to adjust the synchronization between audio and motion. Delay in seconds."
+                    },
+                    "input_strength": {
+                        "title": "input strength",
+                        "type": "number",
+                        "description": "Controls the magnitude of the input audio. Amplitude multiplier in the range [0.0,3.0] "
+                    },
+                    "blink_interval": {
+                        "title": "blink interval",
+                        "type": "number",
+                        "description": "Controls the frequency of blinks. Frequency in seconds"
+                    },
+                    "eye_saccade_seed": {
+                        "title": "eye saccade data",
+                        "type": "integer",
+                        "description": "Controls which eye dart motion is applied"
+                    }
+                }
+            },
+            "SetRangeRequest": {
+                "title": "SetRangeRequest",
+                "required": [
+                    "a2f_player"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_player": {
+                        "title": "A2F player instance",
+                        "type": "string",
+                        "description": "the target A2F player instance "
+                    },
+                    "start": {
+                        "title": "start",
+                        "type": "number",
+                        "description": "(float) Start time in seconds. Original file range used if unspecified or <0.",
+                        "default": 0
+                    },
+                    "end": {
+                        "title": "end",
+                        "type": "number",
+                        "description": "(float) End time in seconds. Original file range used if unspecified or <0.",
+                        "default": -1
+                    }
+                }
+            },
+            "SetSettingsRequest": {
+                "title": "SetSettingsRequest",
+                "required": [
+                    "a2f_instance",
+                    "settings"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_instance": {
+                        "title": "A2F Core instance",
+                        "type": "string",
+                        "description": "Path to the A2F core instance prim"
+                    },
+                    "settings": {
+                        "title": "settings",
+                        "type": "object",
+                        "description": "A dictonary of the different settings in the form {setting:value}"
+                    }
+                }
+            },
+            "SetStreamLivelinkRequestModel": {
+                "title": "SetStreamLivelinkRequestModel",
+                "required": [
+                    "node_path",
+                    "values"
+                ],
+                "type": "object",
+                "properties": {
+                    "node_path": {
+                        "title": "A target node path",
+                        "type": "string",
+                        "description": "Path to a node to access."
+                    },
+                    "values": {
+                        "title": "Settings",
+                        "type": "object",
+                        "description": "The settings to be set, specified as a dictionary of {setting:value} pairs."
+                    }
+                }
+            },
+            "SetTimeRequest": {
+                "title": "SetTimeRequest",
+                "required": [
+                    "a2f_player",
+                    "time"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_player": {
+                        "title": "A2F player instance",
+                        "type": "string",
+                        "description": "the target A2F player instance "
+                    },
+                    "time": {
+                        "title": "time",
+                        "type": "number",
+                        "description": "(float) Set the current time for the player"
+                    }
+                }
+            },
+            "SetTrackRequest": {
+                "title": "SetTrackRequest",
+                "required": [
+                    "a2f_player",
+                    "file_name"
+                ],
+                "type": "object",
+                "properties": {
+                    "a2f_player": {
+                        "title": "A2F player instance",
+                        "type": "string",
+                        "description": "the target A2F player instance "
+                    },
+                    "file_name": {
+                        "title": "file name",
+                        "type": "string",
+                        "description": "the target audio file name"
+                    },
+                    "time_range": {
+                        "title": "time range",
+                        "type": "array",
+                        "items": {},
+                        "description": "[Optional] The work time range for the audio file in seconds. Default time range used if not specified.",
+                        "default": [
+                            0,
+                            -1.0
+                        ]
+                    }
+                }
+            },
+            "ValidationError": {
+                "title": "ValidationError",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "type": "object",
+                "properties": {
+                    "loc": {
+                        "title": "Location",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        }
+                    },
+                    "msg": {
+                        "title": "Message",
+                        "type": "string"
+                    },
+                    "type": {
+                        "title": "Error Type",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
