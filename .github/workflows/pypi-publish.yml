@@ -1,54 +1,60 @@
-name: Publish to PyPI
+# .github/workflows/pypi-publish.yml
+
+name: Build and Publish Python Package to PyPI
 
 on:
-  push:
-    tags:
-      - '*'
-  workflow_dispatch:
+  release:
+    types: [published]
 
-env:
-  POETRY_VERSION: "1.7.2"
+permissions:
+  contents: read # Needed to checkout the code
+  id-token: write # Needed for OIDC token generation
 
 jobs:
   build:
+    name: Build Python package
     runs-on: ubuntu-latest
-    container: python:3.10-slim
+    
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: false
+
       - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-          pip install "poetry==${{ env.POETRY_VERSION }}"
-          poetry config virtualenvs.create false
+        run: poetry install --no-interaction --no-ansi
+
       - name: Build package
-        run: |
-          poetry install --no-interaction --no-ansi
-          poetry build
-      - name: Upload artifacts
+        run: poetry build
+
+      - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: dist
+          name: python-package-distributions
           path: dist/
 
   publish:
-    needs: build
+    name: Publish Python distributions to PyPI
     runs-on: ubuntu-latest
-    container: python:3.10-slim
+    needs: build
+    environment:
+      name: pypi
+      url: https://pypi.org/p/a2f-client
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Download artifacts
+      - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
-          name: dist
+          name: python-package-distributions
           path: dist/
-      - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-          pip install "poetry==${{ env.POETRY_VERSION }}"
-          poetry config virtualenvs.create false
-      - name: Publish to PyPI
-        env:
-          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
-        run: |
-          poetry config pypi-token.pypi $PYPI_TOKEN
-          poetry publish
+
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
