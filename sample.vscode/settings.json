@@ -1,8 +1,0 @@
-{
-    "python.testing.pytestArgs": [
-        "A2FClient/tests",
-        "app/tests"
-    ],
-    "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
-}
