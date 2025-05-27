@@ -1,0 +1,60 @@
+# .github/workflows/pypi-publish.yml
+
+name: Build and Publish Python Package to PyPI
+
+on:
+    release:
+        types: [published]
+
+permissions:
+  contents: read # Needed to checkout the code
+  id-token: write # Needed for OIDC token generation
+
+jobs:
+  build:
+    name: Build Python package
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: false
+
+      - name: Install dependencies
+        run: poetry install --no-interaction --no-ansi
+
+      - name: Build package
+        run: poetry build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+
+  publish:
+    name: Publish Python distributions to PyPI
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: pypi
+      url: https://pypi.org/p/a2f-client
+
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
