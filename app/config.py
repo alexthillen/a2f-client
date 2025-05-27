@@ -7,15 +7,15 @@ from pydantic import BaseModel
 class Config:
     """Application configuration settings."""
 
-    TITLE = os.getenv("A2F_FLASK_TITLE", "A2F Streaming Service API")
-    DESCRIPTION = os.getenv("A2F_FLASK_DESCRIPTION", "An API for streaming blendshapes.")
-    VERSION = os.getenv("A2F_FLASK_VERSION", "0.1.0")
-    HOST = os.getenv("A2F_FLASK_HOST", "0.0.0.0")
-    PORT = int(os.getenv("A2F_FLASK_PORT", "8000"))
-    DEFAULT_WORKERS = int(os.getenv("A2F_FLASK_DEFAULT_WORKERS", "2"))
-    CLIENTS_PER_WORKER = int(os.getenv("A2F_FLASK_CLIENTS_PER_WORKER", "2"))
-    TMP_DIR = os.getenv("A2F_FLASK_TMP_DIR", "tmp")
-    LOG_FILE = os.getenv("A2F_FLASK_LOG_FILE", "a2fserver.log")
+    TITLE = os.getenv("A2F_FASTAPI_TITLE", "A2F Streaming Service API")
+    DESCRIPTION = os.getenv("A2F_FASTAPI_DESCRIPTION", "An API for streaming blendshapes.")
+    VERSION = os.getenv("A2F_FASTAPI_VERSION", "0.1.0")
+    HOST = os.getenv("A2F_FASTAPI_HOST", "0.0.0.0")
+    PORT = int(os.getenv("A2F_FASTAPI_PORT", "8000"))
+    DEFAULT_WORKERS = int(os.getenv("A2F_FASTAPI_DEFAULT_WORKERS", "2"))
+    CLIENTS_PER_WORKER = int(os.getenv("A2F_FASTAPI_CLIENTS_PER_WORKER", "2"))
+    TMP_DIR = os.getenv("A2F_FASTAPI_TMP_DIR", "tmp")
+    LOG_FILE = os.getenv("A2F_FASTAPI_LOG_FILE", "a2fserver.log")
 
 
 class EmotionWeights(BaseModel):

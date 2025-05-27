@@ -29,7 +29,7 @@ if not os.path.exists(A2F_HEADLESS_SCRIPT):
         f"Please set the `A2F_HEADLESS_SCRIPT` environment variable to a valid path."
     )
 
-A2F_PORT = os.getenv("A2F_PORT", "8011")
+A2F_PORT = os.getenv("A2F_PORT", "8190")
 BASE_URL = os.getenv("A2F_BASE_URL", f"http://localhost")
 DEFAULT_USD_MODEL = os.getenv(
     "A2F_DEFAULT_USD_MODEL",

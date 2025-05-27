@@ -1,7 +1,7 @@
 import asyncio
 import json
 import math
-import msvcrt
+import os
 import platform
 import random
 import time
@@ -11,8 +11,6 @@ from loguru import logger
 
 from a2f_client import A2FClient
 from a2f_client.utils import load_audio
-import os
-
 from app.config import Config, EmotionWeights
 
 if platform.system() == "Windows":
@@ -49,10 +47,6 @@ class StreamingManager:
             print(f"Process {os.getpid()} acquired lock on {lock_file_path}")
             self.locked_files[number] = lock_file
             return True
-        except (BlockingIOError, OSError):
-            if lock_file:
-                lock_file.close()
-            return False
         except FileNotFoundError:
             try:
                 lock_file = open(lock_file_path, "w")
@@ -67,7 +61,10 @@ class StreamingManager:
                 if lock_file:
                     lock_file.close()
                 return False
-        return False
+        except (BlockingIOError, OSError):
+            if lock_file:
+                lock_file.close()
+            return False
 
     def _release_lock(self, number):
         lock_file_path = f".lock_{number}"

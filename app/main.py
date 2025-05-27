@@ -4,15 +4,15 @@ import json
 import logging
 import os
 import secrets
-from typing import AsyncGenerator, Dict, List, Optional, Any
+from typing import Any, AsyncGenerator, Dict, List, Optional
 
 import uvicorn
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile, status
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, HttpUrl
 
-from app.streaming_logic import StreamingManager
 from app.config import Config, EmotionWeights
+from app.streaming_logic import StreamingManager
 
 
 def setup_logging() -> logging.Logger:

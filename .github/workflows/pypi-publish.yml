@@ -3,9 +3,8 @@
 name: Build and Publish Python Package to PyPI
 
 on:
-  push
-  # release:
-  #   types: [published]
+    release:
+        types: [published]
 
 permissions:
   contents: read # Needed to checkout the code

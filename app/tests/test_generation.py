@@ -1,8 +1,9 @@
 import json
 import os
-import requests
-import pytest
 from pathlib import Path
+
+import pytest
+import requests
 
 
 def handle_stream_sync(response):

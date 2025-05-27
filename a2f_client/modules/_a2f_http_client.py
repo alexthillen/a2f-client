@@ -2,10 +2,11 @@
 import os
 import subprocess
 import time
-from a2f_client.utils import logger
+
 import requests
 
 from a2f_client import settings
+from a2f_client.utils import logger
 
 
 class _A2FHttpClient:

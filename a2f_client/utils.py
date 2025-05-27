@@ -1,10 +1,11 @@
 import os
 import sys
 import tempfile
-from loguru import logger
-from scipy.io import wavfile
 import time
 from functools import wraps
+
+from loguru import logger
+from scipy.io import wavfile
 
 logger.remove()
 logger.add(
