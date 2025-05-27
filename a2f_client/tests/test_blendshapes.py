@@ -2,9 +2,9 @@ import pytest
 import os
 import sys
 import math
-from A2FClient.a2f_client import A2FClient
-from A2FClient import settings
-from A2FClient.utils import merge_blendshape_list, load_audio
+from a2f_client import A2FClient
+from a2f_client import settings
+from a2f_client.utils import merge_blendshape_list, load_audio
 
 
 TEST_AUDIO_FILE = os.path.join(settings.DIR_PATH, "samples", "sample-0.wav")

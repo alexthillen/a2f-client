@@ -20,7 +20,7 @@ Load a USD face model, stream a WAV file, export per-frame blendshape weights.
 git clone ...
 poetry install
 source .venv/bin/activate
-cd A2FClient
+cd a2f_client
 ```
 
 Set (or export) your headless script in `A2F_HEADLESS_SCRIPT`. ("path/to/audio2face_headless.sh")
@@ -30,7 +30,7 @@ Set (or export) your headless script in `A2F_HEADLESS_SCRIPT`. ("path/to/audio2f
 ## Quickstart
 
 ```python
-from A2FClient import A2FClient
+from a2f_client import A2FClient
 
 # os.environ["A2F_HEADLESS_SCRIPT"]="path/to/audio2face_headless.sh"
 client = A2FClient(port="8192")  

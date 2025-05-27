@@ -1,6 +1,6 @@
 import json
 import os
-from A2FClient import A2FClient
+from a2f_client import A2FClient
 
 # os.environ["A2F_HEADLESS_SCRIPT"] = os.path.join(
 #     os.path.expanduser("~"), ".local/share/ov/pkg/audio2face-2023.2.0/audio2face_headless.sh")

@@ -29,9 +29,11 @@ This project provides a complete solution for generating facial animations by co
 
 ```bash
 export A2F_HEADLESS_SCRIPT="$HOME/.local/share/ov/pkg/audio2face-2023.2.0/audio2face_headless.sh"
-cd a2fwrapper
+git clone git@github.com:alexthillen/a2f-client.git
+cd a2f-client
 poetry install
 source .venv/bin/activate
+# set your app/config.py
 python app/main.py
 ```
 
@@ -44,7 +46,7 @@ pip install a2f-client # Install the client package
 ```python
 import json
 import os
-from A2FClient import A2FClient
+from a2f_client import A2FClient
 # os.environ["A2F_HEADLESS_SCRIPT"] = os.path.join(
 #     os.path.expanduser("~"), ".local/share/ov/pkg/audio2face-2023.2.0/audio2face_headless.sh")
 client = A2FClient(port=8192)  # Use the same port as the server

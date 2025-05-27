@@ -5,9 +5,9 @@ from typing import Optional, Union
 
 from loguru import logger
 
-import A2FClient.settings as settings
-from A2FClient.utils import load_audio
-from A2FClient.modules._a2f_endpoints_client import _A2FEndpointsClient
+import a2f_client.settings as settings
+from a2f_client.utils import load_audio
+from a2f_client.modules._a2f_endpoints_client import _A2FEndpointsClient
 import tempfile
 
 

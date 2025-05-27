@@ -6,9 +6,9 @@ import subprocess
 import time
 
 import requests
-from A2FClient import settings
-from A2FClient.utils import logger
-from A2FClient.modules._a2f_http_client import _A2FHttpClient
+from a2f_client import settings
+from a2f_client.utils import logger
+from a2f_client.modules._a2f_http_client import _A2FHttpClient
 
 
 class _A2FEndpointsClient(_A2FHttpClient):

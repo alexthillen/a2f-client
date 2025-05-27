@@ -9,8 +9,8 @@ from typing import Optional, Union
 
 from loguru import logger
 
-from A2FClient.a2f_client import A2FClient
-from A2FClient.utils import load_audio
+from a2f_client import A2FClient
+from a2f_client.utils import load_audio
 import os
 
 from app.config import Config, EmotionWeights
