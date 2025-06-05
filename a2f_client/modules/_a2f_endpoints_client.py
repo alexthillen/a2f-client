@@ -28,6 +28,9 @@ class _A2FEndpointsClient(_A2FHttpClient):
         super().__init__(*args, **kwargs)
         self._start_headless()
         self._load_usd()
+        self.player = self._get_player()
+        self.a2f_instance = self._get_a2f_instance()
+        self.solver = self._get_solvers()
 
     def _start_headless(self, wait_secs: float = 15.0) -> None:
         """
@@ -89,10 +92,17 @@ class _A2FEndpointsClient(_A2FHttpClient):
             RuntimeError: If no regular A2F player is found.
         """
         res = self._get("/A2F/Player/GetInstances")
-        players = res.get("result", {}).get("regular", [])
+        players = res.get("result", {}).get("regular", None)
         if not players:
             raise RuntimeError("No regular A2F player found.", f"{res}")
         return players[0]
+    
+    def _get_a2f_instance(self) -> str:
+        res = self._get("/A2F/GetInstances")
+        instances = res.get("result", {}).get("fullface_instances", None)
+        if not instances:
+            raise RuntimeError("No core A2F instance found.", f"{res}")
+        return instances[0]
 
     def _set_track(self, player: str, audio_filename: str) -> dict:
         """Sets the audio track for the given A2F player.
@@ -120,7 +130,7 @@ class _A2FEndpointsClient(_A2FHttpClient):
         Returns:
             dict: A dictionary containing the response from the server.
         """
-        return self._post("/A2F/Player/GetTracks", {"a2f_player": self._get_player()})
+        return self._post("/A2F/Player/GetTracks", {"a2f_player": self.player})
 
     def _set_root_path(self, player: str, root_path: str) -> dict:
         """Sets the root folder for the player's audio files.
