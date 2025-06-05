@@ -41,6 +41,7 @@ class A2FClient(_A2FEndpointsClient):
             self._set_root_path(self.player, os.path.dirname(audio_path))
             self._set_track(self.player, os.path.basename(audio_path))
 
+
     def set_emotions(self, emotions: dict = None) -> None:
         """
         Set the emotions for the solver.
@@ -87,6 +88,7 @@ class A2FClient(_A2FEndpointsClient):
 
         if use_a2e:
             self._run_a2e(self.a2f_instance)
+
 
         # set fps such that at least one frame is generated in the specified range
         fps = max(fps, math.ceil(1.0 / (end - start) + 1e-3))
