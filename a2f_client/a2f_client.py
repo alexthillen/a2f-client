@@ -21,8 +21,6 @@ class A2FClient(_A2FEndpointsClient):
         **kwargs,
     ):
         super().__init__(*args, **kwargs)
-        self.player: Optional[str] = None
-        self.solver: Optional[str] = None
         self.duration: Optional[float] = None
         self.output_dir: Optional[str] = output_dir
         os.makedirs(self.output_dir, exist_ok=True)
@@ -40,10 +38,9 @@ class A2FClient(_A2FEndpointsClient):
             or not self.player
         )
         if needs_init:
-            self.player = self._get_player()
             self._set_root_path(self.player, os.path.dirname(audio_path))
             self._set_track(self.player, os.path.basename(audio_path))
-            self.solver = self._get_solvers()
+
 
     def set_emotions(self, emotions: dict = None) -> None:
         """
@@ -54,7 +51,7 @@ class A2FClient(_A2FEndpointsClient):
         """
         if not self.solver:
             raise RuntimeError("Solver is not initialized. Did you call set_audio?")
-        self._set_emotions(self.player, emotions or {})
+        self._set_emotions(self.a2f_instance, emotions or {})
 
     def generate_blendshapes(
         self,
@@ -90,7 +87,8 @@ class A2FClient(_A2FEndpointsClient):
         self._set_range(self.player, start, end)
 
         if use_a2e:
-            self._run_a2e(self.player)
+            self._run_a2e(self.a2f_instance)
+
 
         # set fps such that at least one frame is generated in the specified range
         fps = max(fps, math.ceil(1.0 / (end - start) + 1e-3))
