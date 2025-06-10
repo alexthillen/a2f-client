@@ -142,7 +142,7 @@ class StreamingManager:
             if emotions:
                 client.set_emotions(dict(emotions))
 
-        nr_splits = math.ceil(duration / self.chunk_size - 0.5)
+        nr_splits = math.ceil(duration / self.chunk_size)
         # Fire off ALL tasks immediately
         tasks = []
 
