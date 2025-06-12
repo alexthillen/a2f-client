@@ -19,6 +19,12 @@ This repository contains two main components:
 
 ---
 
+## ⚙️ Visualization 
+
+<img src=".github/assets/A2FServerClient.png" width="700px" alt="Visualization">
+
+---
+
 ## ✨ Key Features
 
 ### Client Library (`a2f_client`)
