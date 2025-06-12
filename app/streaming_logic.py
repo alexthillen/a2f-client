@@ -29,7 +29,7 @@ class StreamingManager:
             A2FClient(port=str(self._next_port())) for _ in range(clients_per_worker)
         ]
         self.client_locks = [asyncio.Lock() for _ in self.a2f_clients]
-        self.chunk_size = 0.3
+        self.chunk_size = 2.0
         self.current_fps = 30
         self.default_fps = 10
         self.max_fps = 30
